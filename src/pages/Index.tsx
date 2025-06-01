@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, MapPin, Heart, BookOpen, Calendar, Star, Globe, Award } from "lucide-react";
 import { Link } from "react-router-dom";
