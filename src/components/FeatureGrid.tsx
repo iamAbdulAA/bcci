@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,6 +24,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const FeatureGrid = () => {
   const [selectedFeature, setSelectedFeature] = useState<any>(null);
@@ -38,6 +38,7 @@ const FeatureGrid = () => {
       color: "from-blue-500 to-blue-600",
       details: ["Personal spiritual goal tracking", "Ministry involvement history", "Event registration & RSVPs", "Digital contribution records"],
       stats: "10K+ Active Members",
+      hasPage: true, // Add this flag to indicate it has a dedicated page
       detailedContent: {
         overview: "Transform how members engage with their faith journey through personalized digital portals that track spiritual growth, ministry involvement, and community participation.",
         features: [
@@ -278,75 +279,89 @@ const FeatureGrid = () => {
           ))}
         </div>
         
-        <Dialog>
-          <DialogTrigger asChild>
+        {/* Conditional rendering based on whether feature has a dedicated page */}
+        {feature.hasPage ? (
+          <Link to="/personal-member-portal">
             <Button 
               variant="ghost" 
               size="sm" 
               className="w-full group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300"
-              onClick={() => setSelectedFeature(feature)}
             >
               Learn More
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-            <DialogHeader>
-              <div className="flex items-center gap-4 mb-4">
-                <div className={`p-3 rounded-xl bg-gradient-to-r ${feature.color}`}>
-                  <feature.icon className="w-6 h-6 text-white" />
+          </Link>
+        ) : (
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="w-full group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300"
+                onClick={() => setSelectedFeature(feature)}
+              >
+                Learn More
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${feature.color}`}>
+                    <feature.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <DialogTitle className="text-2xl font-bold">{feature.title}</DialogTitle>
+                    <DialogDescription className="text-lg mt-1">
+                      {feature.description}
+                    </DialogDescription>
+                  </div>
                 </div>
+              </DialogHeader>
+              
+              <div className="space-y-6">
                 <div>
-                  <DialogTitle className="text-2xl font-bold">{feature.title}</DialogTitle>
-                  <DialogDescription className="text-lg mt-1">
-                    {feature.description}
-                  </DialogDescription>
+                  <h3 className="text-lg font-semibold mb-3">Overview</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {feature.detailedContent.overview}
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Key Features</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {feature.detailedContent.features.map((item: string, idx: number) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-slate-600">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Benefits & Impact</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {feature.detailedContent.benefits.map((benefit: string, idx: number) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <Star className="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-slate-600">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="bg-slate-50 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <BarChart3 className="w-5 h-5 text-blue-600" />
+                    <span className="font-semibold text-slate-800">Current Statistics</span>
+                  </div>
+                  <p className="text-2xl font-bold text-blue-600">{feature.stats}</p>
                 </div>
               </div>
-            </DialogHeader>
-            
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Overview</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  {feature.detailedContent.overview}
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Key Features</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {feature.detailedContent.features.map((item: string, idx: number) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-slate-600">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Benefits & Impact</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {feature.detailedContent.benefits.map((benefit: string, idx: number) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-slate-600">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="bg-slate-50 rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <BarChart3 className="w-5 h-5 text-blue-600" />
-                  <span className="font-semibold text-slate-800">Current Statistics</span>
-                </div>
-                <p className="text-2xl font-bold text-blue-600">{feature.stats}</p>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
+            </DialogContent>
+          </Dialog>
+        )}
       </CardContent>
     </Card>
   );
