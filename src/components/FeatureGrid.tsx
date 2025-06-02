@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { 
   Users, 
   MapPin, 
@@ -23,8 +24,11 @@ import {
   CheckCircle,
   ArrowRight
 } from "lucide-react";
+import { useState } from "react";
 
 const FeatureGrid = () => {
+  const [selectedFeature, setSelectedFeature] = useState<any>(null);
+
   const coreFeatures = [
     {
       icon: Users,
@@ -33,7 +37,24 @@ const FeatureGrid = () => {
       badge: "Core Feature",
       color: "from-blue-500 to-blue-600",
       details: ["Personal spiritual goal tracking", "Ministry involvement history", "Event registration & RSVPs", "Digital contribution records"],
-      stats: "10K+ Active Members"
+      stats: "10K+ Active Members",
+      detailedContent: {
+        overview: "Transform how members engage with their faith journey through personalized digital portals that track spiritual growth, ministry involvement, and community participation.",
+        features: [
+          "Customizable spiritual goal setting and progress tracking",
+          "Complete ministry involvement history with achievements",
+          "Seamless event registration and RSVP management",
+          "Digital giving records with annual statements",
+          "Prayer request submission and tracking",
+          "Personal devotional reading plans"
+        ],
+        benefits: [
+          "Increased member engagement by 85%",
+          "Streamlined administrative processes",
+          "Better visibility into spiritual growth patterns",
+          "Enhanced community connection and accountability"
+        ]
+      }
     },
     {
       icon: MapPin,
@@ -42,7 +63,24 @@ const FeatureGrid = () => {
       badge: "Smart Location",
       color: "from-green-500 to-green-600",
       details: ["GPS-based auto-assignment", "Hierarchical organization", "Cell leader management", "Geographic analytics"],
-      stats: "500+ Clusters Worldwide"
+      stats: "500+ Clusters Worldwide",
+      detailedContent: {
+        overview: "Revolutionary geographic organization system that automatically assigns members to appropriate cells based on location while maintaining hierarchical structure for effective leadership.",
+        features: [
+          "Automated GPS-based member assignment to nearest cells",
+          "Five-tier hierarchy: Country > State > City > Cluster > Cell",
+          "Dynamic cell leader appointment and management tools",
+          "Real-time geographic analytics and heat maps",
+          "Cross-cluster communication and coordination",
+          "Flexible boundary adjustment tools"
+        ],
+        benefits: [
+          "50% reduction in administrative overhead",
+          "Improved local community building",
+          "Better resource allocation across regions",
+          "Enhanced pastoral care through proximity"
+        ]
+      }
     },
     {
       icon: BookOpen,
@@ -51,7 +89,24 @@ const FeatureGrid = () => {
       badge: "Growth Focused",
       color: "from-purple-500 to-purple-600",
       details: ["Progressive learning modules", "Interactive assessments", "Mentorship matching", "Certification tracking"],
-      stats: "2K+ Courses Completed"
+      stats: "2K+ Courses Completed",
+      detailedContent: {
+        overview: "Comprehensive digital discipleship platform that guides believers through structured learning paths from new believer fundamentals to advanced leadership training.",
+        features: [
+          "Adaptive learning paths based on spiritual maturity",
+          "Interactive video lessons with discussion prompts",
+          "Built-in assessment tools and progress tracking",
+          "AI-powered mentorship matching system",
+          "Digital certificates and achievement badges",
+          "Peer learning groups and discussion forums"
+        ],
+        benefits: [
+          "Accelerated spiritual growth trajectory",
+          "Standardized discipleship curriculum globally",
+          "Measurable learning outcomes and progress",
+          "Scalable mentorship program management"
+        ]
+      }
     },
     {
       icon: Play,
@@ -60,7 +115,24 @@ const FeatureGrid = () => {
       badge: "24/7 Access",
       color: "from-red-500 to-red-600",
       details: ["HD live streaming", "Global replay library", "Multi-language support", "Offline downloads"],
-      stats: "50K+ Hours Streamed"
+      stats: "50K+ Hours Streamed",
+      detailedContent: {
+        overview: "Global worship experience platform providing seamless access to live services and extensive library of worship content from churches worldwide.",
+        features: [
+          "Ultra-HD live streaming with minimal latency",
+          "Comprehensive replay vault with smart search",
+          "Multi-language subtitles and audio tracks",
+          "Offline download for limited connectivity areas",
+          "Interactive worship participation tools",
+          "Regional content curation and recommendations"
+        ],
+        benefits: [
+          "Global accessibility regardless of location",
+          "Consistent worship experience quality",
+          "Cultural exchange through diverse content",
+          "Reduced barriers for remote participation"
+        ]
+      }
     }
   ];
 
@@ -72,7 +144,24 @@ const FeatureGrid = () => {
       badge: "Data Driven",
       color: "from-orange-500 to-orange-600",
       details: ["Real-time attendance tracking", "Engagement heat maps", "Growth trend analysis", "Performance metrics"],
-      stats: "95% Data Accuracy"
+      stats: "95% Data Accuracy",
+      detailedContent: {
+        overview: "Powerful analytics platform providing deep insights into church growth, member engagement, and leadership effectiveness through comprehensive data visualization.",
+        features: [
+          "Real-time attendance monitoring across all locations",
+          "Member engagement heat maps and trend analysis",
+          "Leadership performance metrics and scorecards",
+          "Financial giving patterns and forecasting",
+          "Event participation analytics",
+          "Custom report generation and scheduling"
+        ],
+        benefits: [
+          "Data-driven decision making for church growth",
+          "Early identification of engagement issues",
+          "Optimized resource allocation",
+          "Improved leadership development strategies"
+        ]
+      }
     },
     {
       icon: Award,
@@ -81,7 +170,24 @@ const FeatureGrid = () => {
       badge: "Achievement",
       color: "from-yellow-500 to-yellow-600",
       details: ["Digital achievement records", "Leadership nominations", "Testimony collection", "Skill verification"],
-      stats: "1K+ Leaders Recognized"
+      stats: "1K+ Leaders Recognized",
+      detailedContent: {
+        overview: "Comprehensive digital portfolio system that documents spiritual journey, achievements, and qualifications for transparent leadership development and recognition.",
+        features: [
+          "Complete spiritual journey documentation",
+          "Digital badges for completed training and milestones",
+          "Peer and leadership endorsement system",
+          "Testimony and impact story collection",
+          "Skills assessment and verification tools",
+          "Leadership nomination and recommendation workflow"
+        ],
+        benefits: [
+          "Transparent leadership selection process",
+          "Recognition of faithful service and growth",
+          "Clear pathways for spiritual advancement",
+          "Documented legacy of spiritual impact"
+        ]
+      }
     },
     {
       icon: MessageSquare,
@@ -90,7 +196,24 @@ const FeatureGrid = () => {
       badge: "Connected",
       color: "from-teal-500 to-teal-600",
       details: ["Cluster-based messaging", "Prayer request system", "Event notifications", "Secure communications"],
-      stats: "100K+ Messages Daily"
+      stats: "100K+ Messages Daily",
+      detailedContent: {
+        overview: "Secure, purpose-built communication platform facilitating meaningful connections within clusters, prayer networks, and ministry teams.",
+        features: [
+          "Hierarchical messaging based on cluster structure",
+          "Dedicated prayer request channels with privacy controls",
+          "Smart event notifications and reminders",
+          "End-to-end encrypted personal messaging",
+          "Broadcast messaging for leadership announcements",
+          "Integration with calendar and event systems"
+        ],
+        benefits: [
+          "Strengthened community bonds and support",
+          "Efficient information distribution",
+          "Enhanced prayer network coordination",
+          "Reduced communication barriers"
+        ]
+      }
     },
     {
       icon: Star,
@@ -99,7 +222,24 @@ const FeatureGrid = () => {
       badge: "Engaging",
       color: "from-pink-500 to-pink-600",
       details: ["Point-based rewards", "Achievement badges", "Leaderboards", "Mentorship unlocks"],
-      stats: "80% Engagement Rate"
+      stats: "80% Engagement Rate",
+      detailedContent: {
+        overview: "Innovative engagement system that motivates spiritual growth through meaningful achievements, healthy competition, and milestone recognition.",
+        features: [
+          "Point system for spiritual activities and service",
+          "Achievement badges for various milestones",
+          "Community leaderboards with seasonal competitions",
+          "Unlockable content and mentorship opportunities",
+          "Team challenges for clusters and ministries",
+          "Celebration of spiritual milestones and anniversaries"
+        ],
+        benefits: [
+          "Increased motivation for spiritual disciplines",
+          "Fun and engaging growth environment",
+          "Recognition of consistent faithfulness",
+          "Community building through shared achievements"
+        ]
+      }
     }
   ];
 
@@ -138,14 +278,75 @@ const FeatureGrid = () => {
           ))}
         </div>
         
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          className="w-full group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300"
-        >
-          Learn More
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="w-full group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-300"
+              onClick={() => setSelectedFeature(feature)}
+            >
+              Learn More
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <div className="flex items-center gap-4 mb-4">
+                <div className={`p-3 rounded-xl bg-gradient-to-r ${feature.color}`}>
+                  <feature.icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <DialogTitle className="text-2xl font-bold">{feature.title}</DialogTitle>
+                  <DialogDescription className="text-lg mt-1">
+                    {feature.description}
+                  </DialogDescription>
+                </div>
+              </div>
+            </DialogHeader>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold mb-3">Overview</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {feature.detailedContent.overview}
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-3">Key Features</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {feature.detailedContent.features.map((item: string, idx: number) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-slate-600">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-3">Benefits & Impact</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {feature.detailedContent.benefits.map((benefit: string, idx: number) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <Star className="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-slate-600">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="bg-slate-50 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <BarChart3 className="w-5 h-5 text-blue-600" />
+                  <span className="font-semibold text-slate-800">Current Statistics</span>
+                </div>
+                <p className="text-2xl font-bold text-blue-600">{feature.stats}</p>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </CardContent>
     </Card>
   );
