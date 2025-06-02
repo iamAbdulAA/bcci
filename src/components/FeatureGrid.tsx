@@ -38,7 +38,7 @@ const FeatureGrid = () => {
       color: "from-blue-500 to-blue-600",
       details: ["Personal spiritual goal tracking", "Ministry involvement history", "Event registration & RSVPs", "Digital contribution records"],
       stats: "10K+ Active Members",
-      hasPage: true, // Add this flag to indicate it has a dedicated page
+      hasPage: true,
       detailedContent: {
         overview: "Transform how members engage with their faith journey through personalized digital portals that track spiritual growth, ministry involvement, and community participation.",
         features: [
@@ -65,6 +65,7 @@ const FeatureGrid = () => {
       color: "from-green-500 to-green-600",
       details: ["GPS-based auto-assignment", "Hierarchical organization", "Cell leader management", "Geographic analytics"],
       stats: "500+ Clusters Worldwide",
+      hasPage: true,
       detailedContent: {
         overview: "Revolutionary geographic organization system that automatically assigns members to appropriate cells based on location while maintaining hierarchical structure for effective leadership.",
         features: [
@@ -281,7 +282,7 @@ const FeatureGrid = () => {
         
         {/* Conditional rendering based on whether feature has a dedicated page */}
         {feature.hasPage ? (
-          <Link to="/personal-member-portal">
+          <Link to={feature.title === "Personal Member Portals" ? "/personal-member-portal" : "/cluster-cell-system"}>
             <Button 
               variant="ghost" 
               size="sm" 
