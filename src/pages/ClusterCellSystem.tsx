@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +9,7 @@ import {
   Building, 
   Home,
   Crown,
-  Navigation,
+  Navigation as NavigationIcon,
   BarChart3,
   Settings,
   UserPlus,
@@ -193,7 +192,7 @@ const ClusterCellSystem = () => {
                   <div key={index} className="flex items-center justify-between p-4 border rounded-lg bg-white shadow-sm">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <Navigation className="w-5 h-5 text-white" />
+                        <NavigationIcon className="w-5 h-5 text-white" />
                       </div>
                       <div>
                         <h4 className="font-medium">{assignment.name}</h4>
@@ -212,7 +211,7 @@ const ClusterCellSystem = () => {
                 ))}
                 <div className="flex gap-2 pt-4">
                   <Button className="flex-1">
-                    <Navigation className="w-4 h-4 mr-2" />
+                    <NavigationIcon className="w-4 h-4 mr-2" />
                     Run Auto-Assignment
                   </Button>
                   <Button variant="outline" className="flex-1">
