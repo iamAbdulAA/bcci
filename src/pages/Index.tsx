@@ -4,12 +4,29 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, MapPin, Heart, BookOpen, Calendar, Star, Globe, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import FeatureGrid from "@/components/FeatureGrid";
 import StatsSection from "@/components/StatsSection";
 
 const Index = () => {
+  const { toast } = useToast();
+
+  const handleStartJourney = () => {
+    toast({
+      title: "Welcome to Your Spiritual Journey!",
+      description: "We're excited to help you grow in faith and community.",
+    });
+  };
+
+  const handleLearnMore = () => {
+    toast({
+      title: "Learning More",
+      description: "Discover how our platform can transform your spiritual life.",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <Navigation />
@@ -28,10 +45,19 @@ const Index = () => {
               Join thousands of believers worldwide in building stronger faith communities through our digital discipleship platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg font-semibold">
+              <Button 
+                size="lg" 
+                className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg font-semibold"
+                onClick={handleStartJourney}
+              >
                 Start Your Journey
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold"
+                onClick={handleLearnMore}
+              >
                 Learn More
               </Button>
             </div>
@@ -52,28 +78,28 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Platform</h4>
               <ul className="space-y-2 text-slate-400">
-                <li>Member Portals</li>
-                <li>Cell Management</li>
-                <li>Worship Services</li>
-                <li>Growth Tracking</li>
+                <li><Link to="/personal-member-portal" className="hover:text-white transition-colors">Member Portals</Link></li>
+                <li><Link to="/cluster-cell-system" className="hover:text-white transition-colors">Cell Management</Link></li>
+                <li><Link to="/live-on-demand-worship" className="hover:text-white transition-colors">Worship Services</Link></li>
+                <li><Link to="/analytics-dashboard" className="hover:text-white transition-colors">Growth Tracking</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-slate-400">
-                <li>Documentation</li>
-                <li>Training</li>
-                <li>Support</li>
-                <li>Community</li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Documentation", description: "Documentation coming soon!" })}>Documentation</button></li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Training", description: "Training resources coming soon!" })}>Training</button></li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Support", description: "Support center coming soon!" })}>Support</button></li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Community", description: "Community forum coming soon!" })}>Community</button></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <ul className="space-y-2 text-slate-400">
-                <li>Global Network</li>
-                <li>Regional Hubs</li>
-                <li>Local Clusters</li>
-                <li>Prayer Chains</li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Global Network", description: "Connecting you to believers worldwide!" })}>Global Network</button></li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Regional Hubs", description: "Find your local regional hub!" })}>Regional Hubs</button></li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Local Clusters", description: "Connect with nearby clusters!" })}>Local Clusters</button></li>
+                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Prayer Chains", description: "Join our prayer network!" })}>Prayer Chains</button></li>
               </ul>
             </div>
           </div>

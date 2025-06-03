@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -20,9 +19,54 @@ import {
   DollarSign,
   Bell
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 
 const PersonalMemberPortal = () => {
+  const { toast } = useToast();
+
+  const handlePrayerRequest = () => {
+    toast({
+      title: "Prayer Request Submitted",
+      description: "Your prayer request has been shared with your cell group.",
+    });
+  };
+
+  const handleDevotional = () => {
+    toast({
+      title: "Daily Devotional",
+      description: "Opening today's devotional reading...",
+    });
+  };
+
+  const handleRSVP = (eventTitle: string) => {
+    toast({
+      title: "RSVP Confirmed",
+      description: `You're now registered for ${eventTitle}`,
+    });
+  };
+
+  const handleSetGoal = () => {
+    toast({
+      title: "Goal Setting",
+      description: "Opening goal creation form...",
+    });
+  };
+
+  const handleContribution = () => {
+    toast({
+      title: "Contribution Portal",
+      description: "Redirecting to secure giving platform...",
+    });
+  };
+
+  const handleConnectCell = () => {
+    toast({
+      title: "Cell Connection",
+      description: "Opening cell group chat...",
+    });
+  };
+
   const spiritualGoals = [
     { title: "Daily Prayer", progress: 85, target: "30 days", current: "25 days" },
     { title: "Bible Reading", progress: 70, target: "365 chapters", current: "255 chapters" },
@@ -148,19 +192,19 @@ const PersonalMemberPortal = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <Button className="h-20 flex flex-col gap-2">
+                  <Button className="h-20 flex flex-col gap-2" onClick={handlePrayerRequest}>
                     <Heart className="w-6 h-6" />
                     Submit Prayer Request
                   </Button>
-                  <Button variant="outline" className="h-20 flex flex-col gap-2">
+                  <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={handleDevotional}>
                     <BookOpen className="w-6 h-6" />
                     Daily Devotional
                   </Button>
-                  <Button variant="outline" className="h-20 flex flex-col gap-2">
+                  <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => handleRSVP("upcoming event")}>
                     <Calendar className="w-6 h-6" />
                     RSVP Event
                   </Button>
-                  <Button variant="outline" className="h-20 flex flex-col gap-2">
+                  <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={handleConnectCell}>
                     <MessageSquare className="w-6 h-6" />
                     Connect with Cell
                   </Button>
@@ -187,7 +231,7 @@ const PersonalMemberPortal = () => {
                     <p className="text-xs text-slate-500">{goal.progress}% complete</p>
                   </div>
                 ))}
-                <Button className="w-full mt-4">
+                <Button className="w-full mt-4" onClick={handleSetGoal}>
                   <Target className="w-4 h-4 mr-2" />
                   Set New Goal
                 </Button>
@@ -219,7 +263,7 @@ const PersonalMemberPortal = () => {
                         {event.status}
                       </Badge>
                       {event.status === 'pending' && (
-                        <Button size="sm">RSVP</Button>
+                        <Button size="sm" onClick={() => handleRSVP(event.title)}>RSVP</Button>
                       )}
                     </div>
                   </div>
@@ -283,7 +327,7 @@ const PersonalMemberPortal = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-slate-600 mb-4">Last contribution: {contributionSummary.lastGiftDate}</p>
-                  <Button>
+                  <Button onClick={handleContribution}>
                     <Heart className="w-4 h-4 mr-2" />
                     Make a Contribution
                   </Button>
