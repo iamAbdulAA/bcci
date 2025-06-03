@@ -17,7 +17,10 @@ import {
   Calendar,
   MessageSquare,
   Target,
-  Trophy
+  Trophy,
+  Eye,
+  Download,
+  Share
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
