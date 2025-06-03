@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, MapPin, Heart, BookOpen, Calendar, Star, Globe, Award } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -12,19 +12,14 @@ import StatsSection from "@/components/StatsSection";
 
 const Index = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleStartJourney = () => {
-    toast({
-      title: "Welcome to Your Spiritual Journey!",
-      description: "We're excited to help you grow in faith and community.",
-    });
+    navigate('/personal-member-portal');
   };
 
   const handleLearnMore = () => {
-    toast({
-      title: "Learning More",
-      description: "Discover how our platform can transform your spiritual life.",
-    });
+    navigate('/digital-discipleship-flow');
   };
 
   return (
@@ -87,19 +82,19 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-slate-400">
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Documentation", description: "Documentation coming soon!" })}>Documentation</button></li>
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Training", description: "Training resources coming soon!" })}>Training</button></li>
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Support", description: "Support center coming soon!" })}>Support</button></li>
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Community", description: "Community forum coming soon!" })}>Community</button></li>
+                <li><Link to="/digital-discipleship-flow" className="hover:text-white transition-colors">Documentation</Link></li>
+                <li><Link to="/digital-discipleship-flow" className="hover:text-white transition-colors">Training</Link></li>
+                <li><Link to="/integrated-messaging" className="hover:text-white transition-colors">Support</Link></li>
+                <li><Link to="/cluster-cell-system" className="hover:text-white transition-colors">Community</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <ul className="space-y-2 text-slate-400">
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Global Network", description: "Connecting you to believers worldwide!" })}>Global Network</button></li>
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Regional Hubs", description: "Find your local regional hub!" })}>Regional Hubs</button></li>
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Local Clusters", description: "Connect with nearby clusters!" })}>Local Clusters</button></li>
-                <li><button className="hover:text-white transition-colors" onClick={() => toast({ title: "Prayer Chains", description: "Join our prayer network!" })}>Prayer Chains</button></li>
+                <li><Link to="/cluster-cell-system" className="hover:text-white transition-colors">Global Network</Link></li>
+                <li><Link to="/cluster-cell-system" className="hover:text-white transition-colors">Regional Hubs</Link></li>
+                <li><Link to="/cluster-cell-system" className="hover:text-white transition-colors">Local Clusters</Link></li>
+                <li><Link to="/integrated-messaging" className="hover:text-white transition-colors">Prayer Chains</Link></li>
               </ul>
             </div>
           </div>

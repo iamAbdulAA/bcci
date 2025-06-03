@@ -1,26 +1,22 @@
-
 import { Button } from "@/components/ui/button";
 import { Menu, X, Users, Heart, BookOpen, Calendar } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSignIn = () => {
-    toast({
-      title: "Sign In",
-      description: "Redirecting to sign in page...",
-    });
+    // Navigate to a sign-in page (we'll create this route)
+    navigate('/sign-in');
   };
 
   const handleGetStarted = () => {
-    toast({
-      title: "Welcome!",
-      description: "Starting your spiritual journey...",
-    });
+    // Navigate to personal member portal as the starting point
+    navigate('/personal-member-portal');
   };
 
   const scrollToSection = (sectionId: string) => {

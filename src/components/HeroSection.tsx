@@ -2,8 +2,19 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Play, Users, Globe, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleJoinCommunity = () => {
+    navigate('/cluster-cell-system');
+  };
+
+  const handleWatchDemo = () => {
+    navigate('/live-on-demand-worship');
+  };
+
   return (
     <section className="relative py-20 lg:py-32 overflow-hidden">
       {/* Background Elements */}
@@ -35,11 +46,20 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 px-8 py-4 text-lg font-semibold shadow-lg">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 px-8 py-4 text-lg font-semibold shadow-lg"
+              onClick={handleJoinCommunity}
+            >
               <Users className="w-5 h-5 mr-2" />
               Join Community
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-slate-300 hover:bg-slate-50 px-8 py-4 text-lg font-semibold">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-slate-300 hover:bg-slate-50 px-8 py-4 text-lg font-semibold"
+              onClick={handleWatchDemo}
+            >
               <Play className="w-5 h-5 mr-2" />
               Watch Demo
             </Button>
