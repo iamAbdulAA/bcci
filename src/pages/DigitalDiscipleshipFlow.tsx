@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -20,7 +19,6 @@ import {
   FileText,
   Calendar
 } from "lucide-react";
-import Navigation from "@/components/Navigation";
 
 const DigitalDiscipleshipFlow = () => {
   const learningPaths = [
@@ -103,9 +101,7 @@ const DigitalDiscipleshipFlow = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-indigo-50">
-      <Navigation />
-      
-      <div className="container mx-auto px-6 py-8 mt-20">
+      <div className="container mx-auto px-6 py-8">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center">

@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -12,7 +11,6 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import Navigation from "@/components/Navigation";
 
 const AppointCellLeader = () => {
   const { toast } = useToast();
@@ -35,9 +33,7 @@ const AppointCellLeader = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
-      <Navigation />
-      
-      <div className="container mx-auto px-6 py-8 mt-20">
+      <div className="container mx-auto px-6 py-8">
         <div className="mb-8">
           <Button variant="outline" onClick={() => navigate('/cluster-cell-system')} className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />

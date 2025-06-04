@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppLayout } from "./components/AppLayout";
 import Index from "./pages/Index";
 import SignIn from "./pages/SignIn";
 import PersonalMemberPortal from "./pages/PersonalMemberPortal";
@@ -29,21 +30,77 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
           <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/personal-member-portal" element={<PersonalMemberPortal />} />
-          <Route path="/cluster-cell-system" element={<ClusterCellSystem />} />
-          <Route path="/digital-discipleship-flow" element={<DigitalDiscipleshipFlow />} />
-          <Route path="/live-on-demand-worship" element={<LiveOnDemandWorship />} />
-          <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} />
-          <Route path="/spiritual-cv-recognition" element={<SpiritualCVRecognition />} />
-          <Route path="/integrated-messaging" element={<IntegratedMessaging />} />
-          <Route path="/gamification-system" element={<GamificationSystem />} />
-          <Route path="/appoint-cell-leader" element={<AppointCellLeader />} />
-          <Route path="/gps-configuration" element={<GPSConfiguration />} />
-          <Route path="/cluster-management" element={<ClusterManagement />} />
-          <Route path="/cell-management" element={<CellManagement />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={
+            <AppLayout>
+              <Index />
+            </AppLayout>
+          } />
+          <Route path="/personal-member-portal" element={
+            <AppLayout>
+              <PersonalMemberPortal />
+            </AppLayout>
+          } />
+          <Route path="/cluster-cell-system" element={
+            <AppLayout>
+              <ClusterCellSystem />
+            </AppLayout>
+          } />
+          <Route path="/digital-discipleship-flow" element={
+            <AppLayout>
+              <DigitalDiscipleshipFlow />
+            </AppLayout>
+          } />
+          <Route path="/live-on-demand-worship" element={
+            <AppLayout>
+              <LiveOnDemandWorship />
+            </AppLayout>
+          } />
+          <Route path="/analytics-dashboard" element={
+            <AppLayout>
+              <AnalyticsDashboard />
+            </AppLayout>
+          } />
+          <Route path="/spiritual-cv-recognition" element={
+            <AppLayout>
+              <SpiritualCVRecognition />
+            </AppLayout>
+          } />
+          <Route path="/integrated-messaging" element={
+            <AppLayout>
+              <IntegratedMessaging />
+            </AppLayout>
+          } />
+          <Route path="/gamification-system" element={
+            <AppLayout>
+              <GamificationSystem />
+            </AppLayout>
+          } />
+          <Route path="/appoint-cell-leader" element={
+            <AppLayout>
+              <AppointCellLeader />
+            </AppLayout>
+          } />
+          <Route path="/gps-configuration" element={
+            <AppLayout>
+              <GPSConfiguration />
+            </AppLayout>
+          } />
+          <Route path="/cluster-management" element={
+            <AppLayout>
+              <ClusterManagement />
+            </AppLayout>
+          } />
+          <Route path="/cell-management" element={
+            <AppLayout>
+              <CellManagement />
+            </AppLayout>
+          } />
+          <Route path="*" element={
+            <AppLayout>
+              <NotFound />
+            </AppLayout>
+          } />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
