@@ -28,10 +28,14 @@ const ClusterCellSystem = () => {
   const navigate = useNavigate();
 
   const handleManage = (level: string) => {
-    toast({
-      title: `Managing ${level}`,
-      description: `Opening management interface for ${level}...`,
-    });
+    if (level === "Downtown LA") {
+      navigate('/cluster-management');
+    } else {
+      toast({
+        title: `Managing ${level}`,
+        description: `Opening management interface for ${level}...`,
+      });
+    }
   };
 
   const handleCall = (leaderName: string, phone: string) => {
@@ -46,38 +50,23 @@ const ClusterCellSystem = () => {
   };
 
   const handleAppointNewLeader = () => {
-    toast({
-      title: "Appoint New Cell Leader",
-      description: "Opening leadership appointment form...",
-    });
+    navigate('/appoint-cell-leader');
   };
 
   const handleRunAutoAssignment = () => {
-    toast({
-      title: "Auto-Assignment Running",
-      description: "Processing GPS-based member assignments...",
-    });
+    navigate('/gps-configuration');
   };
 
   const handleConfigureRules = () => {
-    toast({
-      title: "Configure Assignment Rules",
-      description: "Opening GPS assignment configuration...",
-    });
+    navigate('/gps-configuration');
   };
 
   const handleCreateCluster = () => {
-    toast({
-      title: "Create New Cluster",
-      description: "Opening cluster creation form...",
-    });
+    navigate('/cluster-management');
   };
 
   const handleBoundarySettings = () => {
-    toast({
-      title: "Boundary Settings",
-      description: "Opening geographic boundary configuration...",
-    });
+    navigate('/cluster-management');
   };
 
   const handlePerformanceReports = () => {
@@ -85,24 +74,15 @@ const ClusterCellSystem = () => {
   };
 
   const handleCreateCell = () => {
-    toast({
-      title: "Create New Cell",
-      description: "Opening cell creation form...",
-    });
+    navigate('/cell-management');
   };
 
   const handleAssignMembers = () => {
-    toast({
-      title: "Assign Members",
-      description: "Opening member assignment interface...",
-    });
+    navigate('/cell-management');
   };
 
   const handleScheduleMeetings = () => {
-    toast({
-      title: "Schedule Meetings",
-      description: "Opening meeting scheduler...",
-    });
+    navigate('/cell-management');
   };
 
   const handleSaveConfiguration = () => {

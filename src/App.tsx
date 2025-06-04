@@ -14,6 +14,10 @@ import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import SpiritualCVRecognition from "./pages/SpiritualCVRecognition";
 import IntegratedMessaging from "./pages/IntegratedMessaging";
 import GamificationSystem from "./pages/GamificationSystem";
+import AppointCellLeader from "./pages/AppointCellLeader";
+import GPSConfiguration from "./pages/GPSConfiguration";
+import ClusterManagement from "./pages/ClusterManagement";
+import CellManagement from "./pages/CellManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +39,10 @@ const App = () => (
           <Route path="/spiritual-cv-recognition" element={<SpiritualCVRecognition />} />
           <Route path="/integrated-messaging" element={<IntegratedMessaging />} />
           <Route path="/gamification-system" element={<GamificationSystem />} />
+          <Route path="/appoint-cell-leader" element={<AppointCellLeader />} />
+          <Route path="/gps-configuration" element={<GPSConfiguration />} />
+          <Route path="/cluster-management" element={<ClusterManagement />} />
+          <Route path="/cell-management" element={<CellManagement />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
