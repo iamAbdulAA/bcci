@@ -20,23 +20,19 @@ import {
   Bell
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const PersonalMemberPortal = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handlePrayerRequest = () => {
-    toast({
-      title: "Prayer Request Submitted",
-      description: "Your prayer request has been shared with your cell group.",
-    });
+    navigate('/integrated-messaging');
   };
 
   const handleDevotional = () => {
-    toast({
-      title: "Daily Devotional",
-      description: "Opening today's devotional reading...",
-    });
+    navigate('/digital-discipleship-flow');
   };
 
   const handleRSVP = (eventTitle: string) => {
@@ -61,10 +57,7 @@ const PersonalMemberPortal = () => {
   };
 
   const handleConnectCell = () => {
-    toast({
-      title: "Cell Connection",
-      description: "Opening cell group chat...",
-    });
+    navigate('/cluster-cell-system');
   };
 
   const spiritualGoals = [
