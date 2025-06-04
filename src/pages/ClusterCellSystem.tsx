@@ -19,9 +19,99 @@ import {
   Target,
   TrendingUp
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
 const ClusterCellSystem = () => {
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
+  const handleManage = (level: string) => {
+    toast({
+      title: `Managing ${level}`,
+      description: `Opening management interface for ${level}...`,
+    });
+  };
+
+  const handleCall = (leaderName: string, phone: string) => {
+    toast({
+      title: `Calling ${leaderName}`,
+      description: `Initiating call to ${phone}...`,
+    });
+  };
+
+  const handleMessage = (leaderName: string) => {
+    navigate('/integrated-messaging');
+  };
+
+  const handleAppointNewLeader = () => {
+    toast({
+      title: "Appoint New Cell Leader",
+      description: "Opening leadership appointment form...",
+    });
+  };
+
+  const handleRunAutoAssignment = () => {
+    toast({
+      title: "Auto-Assignment Running",
+      description: "Processing GPS-based member assignments...",
+    });
+  };
+
+  const handleConfigureRules = () => {
+    toast({
+      title: "Configure Assignment Rules",
+      description: "Opening GPS assignment configuration...",
+    });
+  };
+
+  const handleCreateCluster = () => {
+    toast({
+      title: "Create New Cluster",
+      description: "Opening cluster creation form...",
+    });
+  };
+
+  const handleBoundarySettings = () => {
+    toast({
+      title: "Boundary Settings",
+      description: "Opening geographic boundary configuration...",
+    });
+  };
+
+  const handlePerformanceReports = () => {
+    navigate('/analytics-dashboard');
+  };
+
+  const handleCreateCell = () => {
+    toast({
+      title: "Create New Cell",
+      description: "Opening cell creation form...",
+    });
+  };
+
+  const handleAssignMembers = () => {
+    toast({
+      title: "Assign Members",
+      description: "Opening member assignment interface...",
+    });
+  };
+
+  const handleScheduleMeetings = () => {
+    toast({
+      title: "Schedule Meetings",
+      description: "Opening meeting scheduler...",
+    });
+  };
+
+  const handleSaveConfiguration = () => {
+    toast({
+      title: "Configuration Saved",
+      description: "System settings have been updated successfully.",
+    });
+  };
+
   const hierarchyData = [
     { level: "Country", name: "United States", members: "15,420", clusters: "45", icon: Globe, color: "from-blue-500 to-blue-600" },
     { level: "State", name: "California", members: "3,240", clusters: "12", icon: Building, color: "from-green-500 to-green-600" },
@@ -111,7 +201,7 @@ const ClusterCellSystem = () => {
                           {level.leader && <span>Leader: {level.leader}</span>}
                         </div>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" onClick={() => handleManage(level.name)}>
                         <Settings className="w-4 h-4 mr-2" />
                         Manage
                       </Button>
@@ -161,18 +251,18 @@ const ClusterCellSystem = () => {
                       </div>
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" onClick={() => handleCall(leader.name, leader.phone)}>
                         <Phone className="w-4 h-4 mr-2" />
                         Call
                       </Button>
-                      <Button size="sm">
+                      <Button size="sm" onClick={() => handleMessage(leader.name)}>
                         <Mail className="w-4 h-4 mr-2" />
                         Message
                       </Button>
                     </div>
                   </div>
                 ))}
-                <Button className="w-full">
+                <Button className="w-full" onClick={handleAppointNewLeader}>
                   <UserPlus className="w-4 h-4 mr-2" />
                   Appoint New Cell Leader
                 </Button>
@@ -210,11 +300,11 @@ const ClusterCellSystem = () => {
                   </div>
                 ))}
                 <div className="flex gap-2 pt-4">
-                  <Button className="flex-1">
+                  <Button className="flex-1" onClick={handleRunAutoAssignment}>
                     <NavigationIcon className="w-4 h-4 mr-2" />
                     Run Auto-Assignment
                   </Button>
-                  <Button variant="outline" className="flex-1">
+                  <Button variant="outline" className="flex-1" onClick={handleConfigureRules}>
                     <Settings className="w-4 h-4 mr-2" />
                     Configure Rules
                   </Button>
@@ -347,15 +437,15 @@ const ClusterCellSystem = () => {
                   <CardDescription>Create and manage geographic clusters</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <Button className="w-full">
+                  <Button className="w-full" onClick={handleCreateCluster}>
                     <MapPin className="w-4 h-4 mr-2" />
                     Create New Cluster
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full" onClick={handleBoundarySettings}>
                     <Settings className="w-4 h-4 mr-2" />
                     Boundary Settings
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full" onClick={handlePerformanceReports}>
                     <BarChart3 className="w-4 h-4 mr-2" />
                     Performance Reports
                   </Button>
@@ -368,15 +458,15 @@ const ClusterCellSystem = () => {
                   <CardDescription>Manage individual cell groups</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <Button className="w-full">
+                  <Button className="w-full" onClick={handleCreateCell}>
                     <Home className="w-4 h-4 mr-2" />
                     Create New Cell
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full" onClick={handleAssignMembers}>
                     <UserPlus className="w-4 h-4 mr-2" />
                     Assign Members
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full" onClick={handleScheduleMeetings}>
                     <Calendar className="w-4 h-4 mr-2" />
                     Schedule Meetings
                   </Button>
@@ -416,7 +506,7 @@ const ClusterCellSystem = () => {
                     </select>
                   </div>
                 </div>
-                <Button className="w-full mt-4">
+                <Button className="w-full mt-4" onClick={handleSaveConfiguration}>
                   <Settings className="w-4 h-4 mr-2" />
                   Save Configuration
                 </Button>
