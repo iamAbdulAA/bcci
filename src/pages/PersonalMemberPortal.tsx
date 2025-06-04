@@ -22,6 +22,8 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import { SetGoalDialog } from "@/components/SetGoalDialog";
+import { ContributionDialog } from "@/components/ContributionDialog";
 
 const PersonalMemberPortal = () => {
   const { toast } = useToast();
@@ -224,10 +226,12 @@ const PersonalMemberPortal = () => {
                     <p className="text-xs text-slate-500">{goal.progress}% complete</p>
                   </div>
                 ))}
-                <Button className="w-full mt-4" onClick={handleSetGoal}>
-                  <Target className="w-4 h-4 mr-2" />
-                  Set New Goal
-                </Button>
+                <SetGoalDialog>
+                  <Button className="w-full mt-4">
+                    <Target className="w-4 h-4 mr-2" />
+                    Set New Goal
+                  </Button>
+                </SetGoalDialog>
               </CardContent>
             </Card>
           </TabsContent>
@@ -320,10 +324,12 @@ const PersonalMemberPortal = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-slate-600 mb-4">Last contribution: {contributionSummary.lastGiftDate}</p>
-                  <Button onClick={handleContribution}>
-                    <Heart className="w-4 h-4 mr-2" />
-                    Make a Contribution
-                  </Button>
+                  <ContributionDialog>
+                    <Button>
+                      <Heart className="w-4 h-4 mr-2" />
+                      Make a Contribution
+                    </Button>
+                  </ContributionDialog>
                 </div>
               </CardContent>
             </Card>
