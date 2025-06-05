@@ -1,204 +1,180 @@
-
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { 
-  Smartphone, 
-  Cloud, 
-  Shield, 
   Zap, 
   Users, 
-  BarChart3,
-  BookOpen,
+  BookOpen, 
+  BarChart3, 
+  MessageSquare, 
+  Trophy, 
   Heart,
-  MessageSquare,
-  Calendar
+  User,
+  ArrowRight,
+  CheckCircle 
 } from "lucide-react";
 
 const Platform = () => {
-  const features = [
-    {
-      icon: Smartphone,
-      title: "Mobile-First Design",
-      description: "Access your spiritual journey from any device, anywhere, anytime.",
-      color: "bg-blue-100 text-blue-700"
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Synchronization",
-      description: "Your progress, goals, and contributions are safely stored and synced across all devices.",
-      color: "bg-green-100 text-green-700"
-    },
-    {
-      icon: Shield,
-      title: "Secure & Private",
-      description: "Enterprise-grade security ensures your spiritual journey remains private and protected.",
-      color: "bg-purple-100 text-purple-700"
-    },
-    {
-      icon: Zap,
-      title: "Real-time Updates",
-      description: "Stay connected with your cell group through instant notifications and updates.",
-      color: "bg-yellow-100 text-yellow-700"
-    },
-    {
-      icon: Users,
-      title: "Community Integration",
-      description: "Seamlessly connect with your cell groups, clusters, and church community.",
-      color: "bg-indigo-100 text-indigo-700"
-    },
-    {
-      icon: BarChart3,
-      title: "Progress Analytics",
-      description: "Track your spiritual growth with detailed analytics and insights.",
-      color: "bg-red-100 text-red-700"
-    }
-  ];
-
-  const modules = [
-    {
-      title: "Personal Member Portal",
-      description: "Your personalized dashboard for spiritual growth tracking",
-      icon: User,
-      features: ["Goal Setting", "Progress Tracking", "Contribution Logging"]
-    },
-    {
-      title: "Cluster & Cell System",
-      description: "Comprehensive management for cell groups and clusters",
-      icon: Users,
-      features: ["Member Management", "Group Coordination", "Leadership Tools"]
-    },
-    {
-      title: "Digital Discipleship",
-      description: "Structured learning paths for spiritual development",
-      icon: BookOpen,
-      features: ["Interactive Lessons", "Progress Milestones", "Mentorship"]
-    },
-    {
-      title: "Live Worship",
-      description: "Connect with live and on-demand worship experiences",
-      icon: Heart,
-      features: ["Live Streaming", "On-Demand Content", "Interactive Participation"]
-    },
-    {
-      title: "Integrated Messaging",
-      description: "Seamless communication within your spiritual community",
-      icon: MessageSquare,
-      features: ["Group Chat", "Private Messages", "Announcements"]
-    },
-    {
-      title: "Analytics Dashboard",
-      description: "Comprehensive insights into community engagement",
-      icon: BarChart3,
-      features: ["Growth Metrics", "Engagement Analytics", "Custom Reports"]
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      <div className="container mx-auto px-6 py-12">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-blue-100 text-blue-700 hover:bg-blue-200">
-            BCCI Platform Technology
-          </Badge>
-          <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
-            Built for Modern
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 block">
-              Spiritual Communities
-            </span>
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Our platform combines cutting-edge technology with spiritual wisdom to create 
-            an integrated ecosystem for church communities, cell groups, and individual growth.
-          </p>
-        </div>
+    <div className="container py-10">
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
-        {/* Core Features */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
-            Platform Features
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className={`w-12 h-12 rounded-lg ${feature.color} flex items-center justify-center mb-4`}>
-                    <feature.icon className="w-6 h-6" />
-                  </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Platform Modules */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
-            Integrated Modules
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {modules.map((module, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center">
-                      <module.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl">{module.title}</CardTitle>
-                      <CardDescription>{module.description}</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    {module.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center space-x-2">
-                        <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                        <span className="text-slate-600">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Technical Specifications */}
-        <Card className="border-0 shadow-xl bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-          <CardHeader className="text-center">
-            <CardTitle className="text-3xl mb-4">Technical Excellence</CardTitle>
-            <CardDescription className="text-slate-300 text-lg">
-              Built with modern technologies for reliability, scalability, and performance
-            </CardDescription>
+        {/* Spiritual Growth Card */}
+        <Card className="bg-white shadow-md rounded-lg overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between p-4">
+            <CardTitle className="text-lg font-semibold">Spiritual Growth</CardTitle>
+            <Zap className="h-6 w-6 text-yellow-500" />
           </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <h4 className="font-semibold text-lg mb-2">Frontend</h4>
-                <p className="text-slate-300">React, TypeScript, Tailwind CSS</p>
+          <CardContent className="p-4">
+            <CardDescription className="text-gray-600">Track your spiritual milestones.</CardDescription>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span>Daily Prayer</span>
+                <Badge variant="secondary">
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Completed
+                </Badge>
               </div>
-              <div className="text-center">
-                <h4 className="font-semibold text-lg mb-2">Backend</h4>
-                <p className="text-slate-300">Node.js, PostgreSQL, Redis</p>
+              <div className="flex items-center justify-between">
+                <span>Bible Study</span>
+                <Badge variant="secondary">
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Completed
+                </Badge>
               </div>
-              <div className="text-center">
-                <h4 className="font-semibold text-lg mb-2">Infrastructure</h4>
-                <p className="text-slate-300">AWS, Docker, Kubernetes</p>
-              </div>
-              <div className="text-center">
-                <h4 className="font-semibold text-lg mb-2">Security</h4>
-                <p className="text-slate-300">OAuth 2.0, SSL, GDPR Compliant</p>
+              <div className="flex items-center justify-between">
+                <span>Community Service</span>
+                <Badge variant="outline">
+                  Pending
+                </Badge>
               </div>
             </div>
+            <Button className="w-full mt-4">
+              View Growth <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </CardContent>
         </Card>
+
+        {/* Community Engagement Card */}
+        <Card className="bg-white shadow-md rounded-lg overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between p-4">
+            <CardTitle className="text-lg font-semibold">Community Engagement</CardTitle>
+            <Users className="h-6 w-6 text-blue-500" />
+          </CardHeader>
+          <CardContent className="p-4">
+            <CardDescription className="text-gray-600">Connect and engage with your community.</CardDescription>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span>Local Church Events</span>
+                <span>3</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Volunteer Opportunities</span>
+                <span>5</span>
+              </div>
+            </div>
+            <Button className="w-full mt-4">
+              Explore <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+
+        {/* Learning Resources Card */}
+        <Card className="bg-white shadow-md rounded-lg overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between p-4">
+            <CardTitle className="text-lg font-semibold">Learning Resources</CardTitle>
+            <BookOpen className="h-6 w-6 text-green-500" />
+          </CardHeader>
+          <CardContent className="p-4">
+            <CardDescription className="text-gray-600">Access a wealth of spiritual knowledge.</CardDescription>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span>Available Courses</span>
+                <span>25</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>E-books</span>
+                <span>150</span>
+              </div>
+            </div>
+            <Button className="w-full mt-4">
+              Discover <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+
+        {/* Analytics Dashboard Card */}
+        <Card className="bg-white shadow-md rounded-lg overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between p-4">
+            <CardTitle className="text-lg font-semibold">Analytics Dashboard</CardTitle>
+            <BarChart3 className="h-6 w-6 text-purple-500" />
+          </CardHeader>
+          <CardContent className="p-4">
+            <CardDescription className="text-gray-600">Track your engagement and growth metrics.</CardDescription>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span>Weekly Active Users</span>
+                <span>450</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Average Session Time</span>
+                <span>25 mins</span>
+              </div>
+            </div>
+            <Button className="w-full mt-4">
+              View Analytics <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+
+        {/* Messaging Center Card */}
+        <Card className="bg-white shadow-md rounded-lg overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between p-4">
+            <CardTitle className="text-lg font-semibold">Messaging Center</CardTitle>
+            <MessageSquare className="h-6 w-6 text-orange-500" />
+          </CardHeader>
+          <CardContent className="p-4">
+            <CardDescription className="text-gray-600">Stay connected with instant messaging.</CardDescription>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span>Unread Messages</span>
+                <span>12</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Active Conversations</span>
+                <span>8</span>
+              </div>
+            </div>
+            <Button className="w-full mt-4">
+              Go to Messages <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+
+        {/* Gamification System Card */}
+        <Card className="bg-white shadow-md rounded-lg overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between p-4">
+            <CardTitle className="text-lg font-semibold">Gamification System</CardTitle>
+            <Trophy className="h-6 w-6 text-yellow-600" />
+          </CardHeader>
+          <CardContent className="p-4">
+            <CardDescription className="text-gray-600">Earn points and badges for your spiritual activities.</CardDescription>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span>Current Points</span>
+                <span>350</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Badges Earned</span>
+                <span>5</span>
+              </div>
+            </div>
+            <Button className="w-full mt-4">
+              View Achievements <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+
       </div>
     </div>
   );
