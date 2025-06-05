@@ -3,11 +3,13 @@ import { Menu, X, Users, Heart, BookOpen, Calendar } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { signIn } = useAuth();
 
   const handleSignIn = () => {
     // Navigate to a sign-in page (we'll create this route)
@@ -15,7 +17,12 @@ const Navigation = () => {
   };
 
   const handleGetStarted = () => {
-    // Navigate to personal member portal as the starting point
+    // Sign in the user and then navigate to personal member portal
+    signIn();
+    toast({
+      title: "Welcome to BCCI Platform!",
+      description: "You're now signed in and can access all features.",
+    });
     navigate('/personal-member-portal');
   };
 
