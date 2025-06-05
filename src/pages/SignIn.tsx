@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,15 +6,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { Heart, Mail, Lock } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { signIn } = useAuth();
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
+    signIn(); // Update auth state
     toast({
       title: "Sign In Successful",
       description: "Welcome back to the BCCI Platform!",
