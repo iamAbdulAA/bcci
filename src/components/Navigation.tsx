@@ -9,7 +9,12 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { signIn } = useAuth();
+  const { signIn, isSignedIn } = useAuth();
+
+  // Don't render navigation if user is signed in
+  if (isSignedIn) {
+    return null;
+  }
 
   const handleSignIn = () => {
     // Navigate to a sign-in page (we'll create this route)
