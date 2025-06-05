@@ -22,6 +22,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Platform from "./pages/Platform";
 import Community from "./pages/Community";
 import Support from "./pages/Support";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,11 @@ const App = () => (
           <Route path="/support" element={
             <AppLayout>
               <Support />
+            </AppLayout>
+          } />
+          <Route path="/settings" element={
+            <AppLayout>
+              <Settings />
             </AppLayout>
           } />
           <Route path="/" element={

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
-  Home,
   User,
   Users,
   BookOpen,
@@ -31,7 +30,6 @@ import {
 } from "@/components/ui/sidebar";
 
 const navigationItems = [
-  { title: "Home", url: "/", icon: Home },
   { title: "Personal Portal", url: "/personal-member-portal", icon: User },
   { title: "Cluster & Cell System", url: "/cluster-cell-system", icon: Users },
   { title: "Digital Discipleship", url: "/digital-discipleship-flow", icon: BookOpen },
@@ -47,6 +45,10 @@ const managementItems = [
   { title: "GPS Configuration", url: "/gps-configuration", icon: MapPin },
   { title: "Cluster Management", url: "/cluster-management", icon: Settings },
   { title: "Cell Management", url: "/cell-management", icon: Settings },
+];
+
+const settingsItems = [
+  { title: "Settings", url: "/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
@@ -87,6 +89,24 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {managementItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
+                    <NavLink to={item.url} className={getNavCls}>
+                      <item.icon className="mr-2 h-4 w-4" />
+                      {!isCollapsed && <span>{item.title}</span>}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Account</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {settingsItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
                     <NavLink to={item.url} className={getNavCls}>
