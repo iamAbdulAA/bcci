@@ -27,12 +27,12 @@ export function AppLayout({ children }: AppLayoutProps) {
       <div className="min-h-screen flex w-full">
         <AppSidebar />
         <div className="flex-1 flex flex-col">
-          <header className="h-12 flex items-center border-b bg-white/90 backdrop-blur-md sticky top-0 z-40">
-            <SidebarTrigger className="ml-2">
+          <header className="h-16 flex items-center border-b bg-white/90 backdrop-blur-md sticky top-0 z-40">
+            <SidebarTrigger className="ml-4">
               <Menu className="h-4 w-4" />
             </SidebarTrigger>
           </header>
-          <main className="flex-1">
+          <main className="flex-1 pt-4">
             {children}
           </main>
         </div>
