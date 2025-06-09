@@ -17,57 +17,21 @@ import {
   Star,
   Users,
   DollarSign,
-  Bell
+  Bell,
+  Edit
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { SetGoalDialog } from "@/components/SetGoalDialog";
 import { ContributionDialog } from "@/components/ContributionDialog";
+import { EditGoalDialog } from "@/components/EditGoalDialog";
+import { useSpiritualGoals } from "@/contexts/SpiritualGoalsContext";
 
 const PersonalMemberPortal = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-
-  const handlePrayerRequest = () => {
-    navigate('/integrated-messaging');
-  };
-
-  const handleDevotional = () => {
-    navigate('/digital-discipleship-flow');
-  };
-
-  const handleRSVP = (eventTitle: string) => {
-    toast({
-      title: "RSVP Confirmed",
-      description: `You're now registered for ${eventTitle}`,
-    });
-  };
-
-  const handleSetGoal = () => {
-    toast({
-      title: "Goal Setting",
-      description: "Opening goal creation form...",
-    });
-  };
-
-  const handleContribution = () => {
-    toast({
-      title: "Contribution Portal",
-      description: "Redirecting to secure giving platform...",
-    });
-  };
-
-  const handleConnectCell = () => {
-    navigate('/cluster-cell-system');
-  };
-
-  const spiritualGoals = [
-    { title: "Daily Prayer", progress: 85, target: "30 days", current: "25 days" },
-    { title: "Bible Reading", progress: 70, target: "365 chapters", current: "255 chapters" },
-    { title: "Scripture Memorization", progress: 60, target: "12 verses", current: "7 verses" },
-    { title: "Evangelism Outreach", progress: 40, target: "10 conversations", current: "4 conversations" }
-  ];
+  const { goals } = useSpiritualGoals();
 
   const upcomingEvents = [
     { title: "Sunday Worship Service", date: "Dec 8, 2024", time: "10:00 AM", status: "confirmed" },
@@ -88,6 +52,37 @@ const PersonalMemberPortal = () => {
     lastGiftDate: "Nov 28, 2024",
     frequency: "Monthly"
   };
+
+  const handlePrayerRequest = () => {
+    navigate('/integrated-messaging');
+  };
+
+  const handleDevotional = () => {
+    navigate('/digital-discipleship-flow');
+  };
+
+  const handleRSVP = (eventTitle: string) => {
+    toast({
+      title: "RSVP Confirmed",
+      description: `You're now registered for ${eventTitle}`,
+    });
+  };
+
+  const handleContribution = () => {
+    toast({
+      title: "Contribution Portal",
+      description: "Redirecting to secure giving platform...",
+    });
+  };
+
+  const handleConnectCell = () => {
+    navigate('/cluster-cell-system');
+  };
+
+  // Calculate average progress from goals
+  const averageProgress = goals.length > 0 
+    ? Math.round(goals.reduce((sum, goal) => sum + goal.progress, 0) / goals.length)
+    : 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
@@ -132,7 +127,7 @@ const PersonalMemberPortal = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-blue-600">74%</div>
+                  <div className="text-2xl font-bold text-blue-600">{averageProgress}%</div>
                   <p className="text-xs text-slate-600">Average completion</p>
                 </CardContent>
               </Card>
@@ -216,14 +211,22 @@ const PersonalMemberPortal = () => {
                 <CardDescription>Track your spiritual disciplines and growth milestones</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {spiritualGoals.map((goal, index) => (
-                  <div key={index} className="space-y-2">
+                {goals.map((goal) => (
+                  <div key={goal.id} className="space-y-2">
                     <div className="flex justify-between items-center">
                       <h4 className="font-medium">{goal.title}</h4>
-                      <span className="text-sm text-slate-600">{goal.current} / {goal.target}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm text-slate-600">{goal.currentValue} / {goal.targetValue}</span>
+                        <EditGoalDialog goal={goal}>
+                          <Button variant="outline" size="sm">
+                            <Edit className="w-4 h-4" />
+                          </Button>
+                        </EditGoalDialog>
+                      </div>
                     </div>
                     <Progress value={goal.progress} className="h-2" />
                     <p className="text-xs text-slate-500">{goal.progress}% complete</p>
+                    <p className="text-sm text-slate-600">{goal.description}</p>
                   </div>
                 ))}
                 <SetGoalDialog>

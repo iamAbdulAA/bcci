@@ -22,18 +22,33 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import { HierarchyManagementDialog } from "@/components/HierarchyManagementDialog";
+import { useState } from "react";
 
 const ClusterCellSystem = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const [managementDialog, setManagementDialog] = useState<{
+    open: boolean;
+    level: string;
+    name: string;
+    data: any;
+  }>({
+    open: false,
+    level: "",
+    name: "",
+    data: {}
+  });
 
-  const handleManage = (level: string) => {
-    if (level === "Downtown LA") {
+  const handleManage = (level: string, name: string, data: any) => {
+    if (level === "Cluster" && name === "Downtown LA") {
       navigate('/cluster-management');
     } else {
-      toast({
-        title: `Managing ${level}`,
-        description: `Opening management interface for ${level}...`,
+      setManagementDialog({
+        open: true,
+        level,
+        name,
+        data
       });
     }
   };
@@ -181,7 +196,16 @@ const ClusterCellSystem = () => {
                           {level.leader && <span>Leader: {level.leader}</span>}
                         </div>
                       </div>
-                      <Button variant="outline" size="sm" onClick={() => handleManage(level.name)}>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleManage(level.level, level.name, {
+                          members: level.members,
+                          clusters: level.clusters,
+                          cells: level.cells,
+                          leader: level.leader
+                        })}
+                      >
                         <Settings className="w-4 h-4 mr-2" />
                         Manage
                       </Button>
@@ -494,6 +518,14 @@ const ClusterCellSystem = () => {
             </Card>
           </TabsContent>
         </Tabs>
+
+        <HierarchyManagementDialog
+          open={managementDialog.open}
+          onOpenChange={(open) => setManagementDialog(prev => ({ ...prev, open }))}
+          level={managementDialog.level}
+          name={managementDialog.name}
+          data={managementDialog.data}
+        />
       </div>
     </div>
   );
