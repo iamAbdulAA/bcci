@@ -20,7 +20,7 @@ import {
   Calendar
 } from "lucide-react";
 
-const DigitalDiscipleshipFlow = () => {
+const DigitalTransformationFlow = () => {
   const learningPaths = [
     { 
       title: "New Believer Foundations", 
@@ -108,7 +108,7 @@ const DigitalDiscipleshipFlow = () => {
               <BookOpen className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-slate-800">Digital Discipleship Flow</h1>
+              <h1 className="text-3xl font-bold text-slate-800">Digital Transformation Flow</h1>
               <p className="text-slate-600">Interactive learning paths for spiritual growth and leadership development</p>
             </div>
           </div>
@@ -294,4 +294,4 @@ const DigitalDiscipleshipFlow = () => {
   );
 };
 
-export default DigitalDiscipleshipFlow;
+export default DigitalTransformationFlow;

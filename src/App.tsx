@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import SignIn from "./pages/SignIn";
 import PersonalMemberPortal from "./pages/PersonalMemberPortal";
 import ClusterCellSystem from "./pages/ClusterCellSystem";
-import DigitalDiscipleshipFlow from "./pages/DigitalDiscipleshipFlow";
+import DigitalTransformationFlow from "./pages/DigitalTransformationFlow";
 import LiveOnDemandWorship from "./pages/LiveOnDemandWorship";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 import SpiritualCVRecognition from "./pages/SpiritualCVRecognition";
@@ -72,9 +72,9 @@ const App = () => (
                 <ClusterCellSystem />
               </AppLayout>
             } />
-            <Route path="/digital-discipleship-flow" element={
+            <Route path="/digital-transformation-flow" element={
               <AppLayout>
-                <DigitalDiscipleshipFlow />
+                <DigitalTransformationFlow />
               </AppLayout>
             } />
             <Route path="/live-on-demand-worship" element={

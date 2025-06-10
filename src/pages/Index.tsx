@@ -19,7 +19,7 @@ const Index = () => {
   };
 
   const handleLearnMore = () => {
-    navigate('/digital-discipleship-flow');
+    navigate('/digital-transformation-flow');
   };
 
   return (
@@ -37,7 +37,7 @@ const Index = () => {
               Ready to Transform Your Spiritual Journey?
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Join thousands of believers worldwide in building stronger faith communities through our digital discipleship platform.
+              Join thousands of believers worldwide in building stronger faith communities through our digital transformation platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -67,7 +67,7 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4">BCCI Platform</h3>
               <p className="text-slate-400">
-                Building digital spiritual ecosystems for global discipleship and fellowship.
+                Building digital spiritual ecosystems for global transformation and fellowship.
               </p>
             </div>
             <div>
@@ -82,8 +82,8 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-slate-400">
-                <li><Link to="/digital-discipleship-flow" className="hover:text-white transition-colors">Documentation</Link></li>
-                <li><Link to="/digital-discipleship-flow" className="hover:text-white transition-colors">Training</Link></li>
+                <li><Link to="/digital-transformation-flow" className="hover:text-white transition-colors">Documentation</Link></li>
+                <li><Link to="/digital-transformation-flow" className="hover:text-white transition-colors">Training</Link></li>
                 <li><Link to="/integrated-messaging" className="hover:text-white transition-colors">Support</Link></li>
                 <li><Link to="/cluster-cell-system" className="hover:text-white transition-colors">Community</Link></li>
               </ul>
@@ -99,7 +99,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 BCCI Global Discipleship Platform. All rights reserved.</p>
+            <p>&copy; 2024 BCCI Global Transformation Platform. All rights reserved.</p>
           </div>
         </div>
       </footer>
