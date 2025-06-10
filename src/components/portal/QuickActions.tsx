@@ -30,29 +30,44 @@ export const QuickActions = () => {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Bell className="w-5 h-5" />
+      <CardHeader className="pb-3 sm:pb-6">
+        <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+          <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
           Quick Actions
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Button className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={handlePrayerRequest}>
-            <Heart className="w-6 h-6" />
-            Submit Prayer Request
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
+          <Button 
+            className="h-16 sm:h-20 flex flex-col gap-1 sm:gap-2 hover:scale-105 transition-transform text-xs sm:text-sm p-2" 
+            onClick={handlePrayerRequest}
+          >
+            <Heart className="w-4 h-4 sm:w-6 sm:h-6" />
+            <span className="text-center leading-tight">Submit Prayer Request</span>
           </Button>
-          <Button variant="outline" className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={handleDevotional}>
-            <BookOpen className="w-6 h-6" />
-            Daily Devotional
+          <Button 
+            variant="outline" 
+            className="h-16 sm:h-20 flex flex-col gap-1 sm:gap-2 hover:scale-105 transition-transform text-xs sm:text-sm p-2" 
+            onClick={handleDevotional}
+          >
+            <BookOpen className="w-4 h-4 sm:w-6 sm:h-6" />
+            <span className="text-center leading-tight">Daily Devotional</span>
           </Button>
-          <Button variant="outline" className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={() => handleRSVP("upcoming event")}>
-            <Calendar className="w-6 h-6" />
-            RSVP Event
+          <Button 
+            variant="outline" 
+            className="h-16 sm:h-20 flex flex-col gap-1 sm:gap-2 hover:scale-105 transition-transform text-xs sm:text-sm p-2" 
+            onClick={() => handleRSVP("upcoming event")}
+          >
+            <Calendar className="w-4 h-4 sm:w-6 sm:h-6" />
+            <span className="text-center leading-tight">RSVP Event</span>
           </Button>
-          <Button variant="outline" className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={handleConnectCell}>
-            <MessageSquare className="w-6 h-6" />
-            Connect with Cell
+          <Button 
+            variant="outline" 
+            className="h-16 sm:h-20 flex flex-col gap-1 sm:gap-2 hover:scale-105 transition-transform text-xs sm:text-sm p-2" 
+            onClick={handleConnectCell}
+          >
+            <MessageSquare className="w-4 h-4 sm:w-6 sm:h-6" />
+            <span className="text-center leading-tight">Connect with Cell</span>
           </Button>
         </div>
       </CardContent>
