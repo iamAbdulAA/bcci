@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -30,7 +29,6 @@ import {
 } from "@/components/ui/sidebar";
 import { SearchBar } from "./SearchBar";
 import { NotificationBell } from "./NotificationBell";
-import { ThemeToggle } from "./ThemeToggle";
 
 const navigationItems = [
   { title: "Personal Portal", url: "/personal-member-portal", icon: User },
@@ -72,7 +70,6 @@ export function AppSidebar() {
           <div className="flex items-center space-x-2">
             <SearchBar />
             <NotificationBell />
-            <ThemeToggle />
           </div>
         )}
         <SidebarTrigger />

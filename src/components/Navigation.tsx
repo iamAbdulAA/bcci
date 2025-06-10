@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { ThemeToggle } from "./ThemeToggle";
 import { SearchBar } from "./SearchBar";
 import { NotificationBell } from "./NotificationBell";
 
@@ -90,7 +89,6 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-2">
             <SearchBar />
             <NotificationBell />
-            <ThemeToggle />
             <Button variant="ghost" className="text-slate-600 hover:text-blue-600" onClick={handleSignIn}>
               Sign In
             </Button>
@@ -143,7 +141,6 @@ const Navigation = () => {
                 <div className="flex items-center space-x-2">
                   <SearchBar />
                   <NotificationBell />
-                  <ThemeToggle />
                 </div>
               </div>
               <div className="flex flex-col space-y-2">
