@@ -14,7 +14,7 @@ export const QuickActions = () => {
   };
 
   const handleDevotional = () => {
-    navigate('/digital-discipleship-flow');
+    navigate('/digital-transformation-flow');
   };
 
   const handleRSVP = (eventTitle: string) => {
@@ -38,19 +38,19 @@ export const QuickActions = () => {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Button className="h-20 flex flex-col gap-2" onClick={handlePrayerRequest}>
+          <Button className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={handlePrayerRequest}>
             <Heart className="w-6 h-6" />
             Submit Prayer Request
           </Button>
-          <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={handleDevotional}>
+          <Button variant="outline" className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={handleDevotional}>
             <BookOpen className="w-6 h-6" />
             Daily Devotional
           </Button>
-          <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => handleRSVP("upcoming event")}>
+          <Button variant="outline" className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={() => handleRSVP("upcoming event")}>
             <Calendar className="w-6 h-6" />
             RSVP Event
           </Button>
-          <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={handleConnectCell}>
+          <Button variant="outline" className="h-20 flex flex-col gap-2 hover:scale-105 transition-transform" onClick={handleConnectCell}>
             <MessageSquare className="w-6 h-6" />
             Connect with Cell
           </Button>

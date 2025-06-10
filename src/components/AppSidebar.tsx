@@ -28,11 +28,14 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { SearchBar } from "./SearchBar";
+import { NotificationBell } from "./NotificationBell";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navigationItems = [
   { title: "Personal Portal", url: "/personal-member-portal", icon: User },
   { title: "Cluster & Cell System", url: "/cluster-cell-system", icon: Users },
-  { title: "Digital Discipleship", url: "/digital-discipleship-flow", icon: BookOpen },
+  { title: "Digital Transformation", url: "/digital-transformation-flow", icon: BookOpen },
   { title: "Live Worship", url: "/live-on-demand-worship", icon: Play },
   { title: "Analytics", url: "/analytics-dashboard", icon: BarChart3 },
   { title: "CV Recognition", url: "/spiritual-cv-recognition", icon: Eye },
@@ -63,7 +66,17 @@ export function AppSidebar() {
 
   return (
     <Sidebar className={isCollapsed ? "w-14" : "w-64"} collapsible="icon">
-      <SidebarTrigger className="m-2 self-end" />
+      {/* Header with controls */}
+      <div className="flex items-center justify-between p-2 border-b">
+        {!isCollapsed && (
+          <div className="flex items-center space-x-2">
+            <SearchBar />
+            <NotificationBell />
+            <ThemeToggle />
+          </div>
+        )}
+        <SidebarTrigger />
+      </div>
       
       <SidebarContent>
         <SidebarGroup>

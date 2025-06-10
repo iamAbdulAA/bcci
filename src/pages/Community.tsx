@@ -1,247 +1,199 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { MemberDirectory } from "@/components/MemberDirectory";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { 
-  Users, 
-  Heart, 
-  MessageCircle, 
-  Calendar, 
-  Star,
-  MapPin,
-  Clock,
-  UserPlus,
-  Zap,
-  Trophy
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Users, MessageSquare, Calendar, Heart, Plus, Star } from "lucide-react";
 
 const Community = () => {
-  const communityStats = [
-    { label: "Active Members", value: "2,847", icon: Users, color: "text-blue-600" },
-    { label: "Cell Groups", value: "156", icon: Heart, color: "text-green-600" },
-    { label: "Monthly Events", value: "89", icon: Calendar, color: "text-purple-600" },
-    { label: "Prayer Requests", value: "234", icon: MessageCircle, color: "text-red-600" }
-  ];
-
-  const testimonials = [
+  const discussions = [
     {
-      name: "Sarah Johnson",
-      role: "Cell Group Leader",
-      content: "The BCCI platform has transformed how we connect and grow together. Our cell group engagement has increased by 300%!",
-      avatar: "/placeholder.svg",
-      rating: 5
+      title: "Prayer for Healing Service",
+      author: "Pastor Johnson",
+      replies: 23,
+      lastActivity: "2 hours ago",
+      category: "Prayer"
     },
     {
-      name: "Michael Chen",
-      role: "Youth Pastor",
-      content: "The digital discipleship tools have made it so much easier to track spiritual growth and mentor our young people.",
-      avatar: "/placeholder.svg",
-      rating: 5
+      title: "Youth Bible Study Planning",
+      author: "Sarah Williams",
+      replies: 15,
+      lastActivity: "4 hours ago",
+      category: "Events"
     },
     {
-      name: "Rebecca Williams",
-      role: "Community Member",
-      content: "I love how I can set spiritual goals and see my progress. It's like having a personal spiritual trainer!",
-      avatar: "/placeholder.svg",
-      rating: 5
+      title: "Community Outreach Ideas",
+      author: "Michael Brown",
+      replies: 31,
+      lastActivity: "1 day ago",
+      category: "Outreach"
     }
   ];
 
-  const upcomingEvents = [
+  const testimonies = [
     {
-      title: "Sunday Service",
-      date: "Dec 8, 2024",
-      time: "10:00 AM",
-      location: "Main Sanctuary",
-      attendees: 450,
-      type: "Worship"
+      author: "Emma Davis",
+      title: "Healing Through Faith",
+      excerpt: "I want to share how prayer and community support helped me through...",
+      date: "2 days ago",
+      likes: 12
     },
     {
-      title: "Youth Cell Group Meeting",
-      date: "Dec 10, 2024",
-      time: "7:00 PM",
-      location: "Community Hall B",
-      attendees: 28,
-      type: "Cell Group"
-    },
-    {
-      title: "Prayer & Fasting Week",
-      date: "Dec 15-21, 2024",
-      time: "All Day",
-      location: "Various Locations",
-      attendees: 120,
-      type: "Special Event"
-    },
-    {
-      title: "Christmas Outreach",
-      date: "Dec 24, 2024",
-      time: "2:00 PM",
-      location: "Downtown Plaza",
-      attendees: 89,
-      type: "Outreach"
+      author: "David Wilson",
+      title: "Finding Purpose in Service",
+      excerpt: "Volunteering at the community center opened my eyes to...",
+      date: "1 week ago",
+      likes: 8
     }
-  ];
-
-  const cellGroups = [
-    { name: "Young Professionals", leader: "David Kim", members: 18, meetDay: "Wednesday" },
-    { name: "Families United", leader: "Lisa Garcia", members: 24, meetDay: "Saturday" },
-    { name: "College Connect", leader: "James Wilson", members: 15, meetDay: "Friday" },
-    { name: "Senior Saints", leader: "Mary Thompson", members: 12, meetDay: "Tuesday" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50">
-      <div className="container mx-auto px-6 py-12">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-green-100 text-green-700 hover:bg-green-200">
-            BCCI Community
-          </Badge>
-          <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
-            Growing Together in
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-700 block">
-              Faith & Fellowship
-            </span>
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of believers connecting, growing, and serving together 
-            through our vibrant community platform.
-          </p>
-        </div>
+    <div className="container py-10">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-slate-800 mb-2">Community Hub</h1>
+        <p className="text-slate-600">Connect, share, and grow together in faith</p>
+      </div>
 
-        {/* Community Stats */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {communityStats.map((stat, index) => (
-            <Card key={index} className="border-0 shadow-lg text-center">
-              <CardContent className="pt-6">
-                <stat.icon className={`w-8 h-8 mx-auto mb-3 ${stat.color}`} />
-                <div className="text-3xl font-bold text-slate-800 mb-1">{stat.value}</div>
-                <div className="text-slate-600">{stat.label}</div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      <Tabs defaultValue="directory" className="w-full">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="directory">Directory</TabsTrigger>
+          <TabsTrigger value="discussions">Discussions</TabsTrigger>
+          <TabsTrigger value="testimonies">Testimonies</TabsTrigger>
+          <TabsTrigger value="events">Events</TabsTrigger>
+        </TabsList>
 
-        {/* Testimonials */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
-            Community Voices
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-lg">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <Avatar>
-                      <AvatarImage src={testimonial.avatar} />
-                      <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <CardTitle className="text-lg">{testimonial.name}</CardTitle>
-                      <CardDescription>{testimonial.role}</CardDescription>
+        <TabsContent value="directory" className="space-y-6">
+          <MemberDirectory />
+        </TabsContent>
+
+        <TabsContent value="discussions" className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl font-semibold">Community Discussions</h2>
+            <Button>
+              <Plus className="w-4 h-4 mr-2" />
+              New Discussion
+            </Button>
+          </div>
+          
+          <div className="space-y-4">
+            {discussions.map((discussion, index) => (
+              <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg mb-2">{discussion.title}</h3>
+                      <div className="flex items-center gap-4 text-sm text-slate-600">
+                        <span>by {discussion.author}</span>
+                        <span className="flex items-center gap-1">
+                          <MessageSquare className="w-4 h-4" />
+                          {discussion.replies} replies
+                        </span>
+                        <span>{discussion.lastActivity}</span>
+                      </div>
                     </div>
+                    <Badge variant="outline">{discussion.category}</Badge>
                   </div>
-                  <div className="flex space-x-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600 italic">"{testimonial.content}"</p>
                 </CardContent>
               </Card>
             ))}
           </div>
-        </div>
+        </TabsContent>
 
-        {/* Upcoming Events */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-800 mb-8">Upcoming Events</h2>
-            <div className="space-y-4">
-              {upcomingEvents.map((event, index) => (
-                <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold text-lg text-slate-800">{event.title}</h3>
-                      <Badge variant="outline" className="text-xs">
-                        {event.type}
-                      </Badge>
-                    </div>
-                    <div className="space-y-2 text-slate-600">
-                      <div className="flex items-center space-x-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>{event.date}</span>
-                        <Clock className="w-4 h-4 ml-2" />
-                        <span>{event.time}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <MapPin className="w-4 h-4" />
-                        <span>{event.location}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Users className="w-4 h-4" />
-                        <span>{event.attendees} attending</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+        <TabsContent value="testimonies" className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl font-semibold">Testimonies</h2>
+            <Button>
+              <Plus className="w-4 h-4 mr-2" />
+              Share Testimony
+            </Button>
           </div>
-
-          {/* Cell Groups */}
-          <div>
-            <h2 className="text-3xl font-bold text-slate-800 mb-8">Active Cell Groups</h2>
-            <div className="space-y-4">
-              {cellGroups.map((group, index) => (
-                <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold text-lg text-slate-800">{group.name}</h3>
-                      <Button size="sm" variant="outline">
-                        <UserPlus className="w-4 h-4 mr-1" />
-                        Join
-                      </Button>
+          
+          <div className="space-y-4">
+            {testimonies.map((testimony, index) => (
+              <Card key={index} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">{testimony.title}</h3>
+                  <p className="text-slate-600 mb-4">{testimony.excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4 text-sm text-slate-600">
+                      <span>by {testimony.author}</span>
+                      <span>{testimony.date}</span>
                     </div>
-                    <div className="space-y-1 text-slate-600">
-                      <div className="flex items-center justify-between">
-                        <span>Leader: {group.leader}</span>
-                        <span>{group.members} members</span>
-                      </div>
-                      <div>Meets: {group.meetDay}s</div>
+                    <div className="flex items-center gap-1 text-sm text-slate-600">
+                      <Heart className="w-4 h-4" />
+                      {testimony.likes}
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </div>
+        </TabsContent>
 
-        {/* Call to Action */}
-        <Card className="border-0 shadow-xl bg-gradient-to-r from-green-600 to-blue-700 text-white text-center">
-          <CardContent className="py-12">
-            <Trophy className="w-16 h-16 mx-auto mb-6 text-yellow-300" />
-            <h2 className="text-3xl font-bold mb-4">Ready to Join Our Community?</h2>
-            <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-              Connect with believers, grow in your faith, and make a lasting impact 
-              in your spiritual journey.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-slate-800 hover:bg-slate-100">
-                <UserPlus className="w-5 h-5 mr-2" />
-                Join a Cell Group
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-slate-800">
-                <Zap className="w-5 h-5 mr-2" />
-                Start Your Journey
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+        <TabsContent value="events" className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl font-semibold">Community Events</h2>
+            <Button>
+              <Plus className="w-4 h-4 mr-2" />
+              Create Event
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <Badge className="bg-blue-100 text-blue-700">This Week</Badge>
+                  <Calendar className="w-5 h-5 text-blue-600" />
+                </div>
+                <CardTitle className="text-lg">Bible Study</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600 mb-4">Weekly Bible study focusing on the Gospel of John</p>
+                <div className="text-sm text-slate-500">
+                  <p>Wednesday, 7:00 PM</p>
+                  <p>Community Center</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <Badge className="bg-green-100 text-green-700">Next Week</Badge>
+                  <Users className="w-5 h-5 text-green-600" />
+                </div>
+                <CardTitle className="text-lg">Community Outreach</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600 mb-4">Volunteer at the local food bank and homeless shelter</p>
+                <div className="text-sm text-slate-500">
+                  <p>Saturday, 9:00 AM</p>
+                  <p>City Food Bank</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <Badge className="bg-purple-100 text-purple-700">Monthly</Badge>
+                  <Heart className="w-5 h-5 text-purple-600" />
+                </div>
+                <CardTitle className="text-lg">Prayer Meeting</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600 mb-4">Monthly gathering for corporate prayer and fellowship</p>
+                <div className="text-sm text-slate-500">
+                  <p>First Friday, 7:30 PM</p>
+                  <p>Main Sanctuary</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

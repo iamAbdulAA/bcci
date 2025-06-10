@@ -1,9 +1,13 @@
+
 import { Button } from "@/components/ui/button";
 import { Menu, X, Users, Heart, BookOpen, Calendar } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { ThemeToggle } from "./ThemeToggle";
+import { SearchBar } from "./SearchBar";
+import { NotificationBell } from "./NotificationBell";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,12 +21,10 @@ const Navigation = () => {
   }
 
   const handleSignIn = () => {
-    // Navigate to a sign-in page (we'll create this route)
     navigate('/sign-in');
   };
 
   const handleGetStarted = () => {
-    // Sign in the user and then navigate to personal member portal
     signIn();
     toast({
       title: "Welcome to BCCI Platform!",
@@ -85,7 +87,10 @@ const Navigation = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-2">
+            <SearchBar />
+            <NotificationBell />
+            <ThemeToggle />
             <Button variant="ghost" className="text-slate-600 hover:text-blue-600" onClick={handleSignIn}>
               Sign In
             </Button>
@@ -134,7 +139,14 @@ const Navigation = () => {
               >
                 Support
               </button>
-              <div className="flex flex-col space-y-2 pt-4 border-t border-slate-200">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+                <div className="flex items-center space-x-2">
+                  <SearchBar />
+                  <NotificationBell />
+                  <ThemeToggle />
+                </div>
+              </div>
+              <div className="flex flex-col space-y-2">
                 <Button variant="ghost" className="justify-start" onClick={handleSignIn}>
                   Sign In
                 </Button>
